@@ -1,6 +1,7 @@
 /* ========================================
    VARIABLES GLOBALES PARA LIGHT/DARK MODE
    ======================================== */
+
 :root {
   --bg-primary: #f5f5f5;
   --bg-secondary: #e5e5e5;
@@ -9,7 +10,7 @@
   --text-secondary: #555555;
   --border-color: #ccc;
   --card-border: #d1d1d1;
-  --shadow-hover: 0 4px 10px rgba(0,0,0,0.15);
+  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.15);
   --color-primary: #2563eb;
 
   --event-blue: #3b82f6;
@@ -19,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root {
+  body:not([data-theme]) {
     --bg-primary: #1f2027;
     --bg-secondary: #2a2d35;
     --bg-tertiary: #24262d;
@@ -27,8 +28,80 @@
     --text-secondary: #999999;
     --border-color: #444;
     --card-border: #333;
-    --shadow-hover: 0 4px 10px rgba(0,0,0,0.5);
+    --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.5);
   }
+}
+
+/* Dark mode manual (toggle) */
+body[data-theme="dark"] {
+  --bg-primary: #1f2027;
+  --bg-secondary: #2a2d35;
+  --bg-tertiary: #24262d;
+  --text-primary: #e5e5e5;
+  --text-secondary: #999999;
+  --border-color: #444;
+  --card-border: #333;
+  --shadow-hover: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+/* Base page colors */
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Dark/light polish for Bulma components */
+body .box {
+  background-color: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
+  color: var(--text-primary);
+}
+
+body .navbar {
+  background-color: var(--bg-tertiary);
+}
+
+body .title,
+body .subtitle,
+body .label {
+  color: var(--text-primary);
+}
+
+body .menu-label {
+  color: var(--text-secondary);
+}
+
+body .menu-list a {
+  color: var(--text-primary);
+}
+
+body .menu-list a:hover,
+body .menu-list a.is-active {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+body .input,
+body .textarea {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+body .input::placeholder,
+body .textarea::placeholder {
+  color: var(--text-secondary);
+}
+
+body .button:not(.is-primary):not(.is-link):not(.is-info):not(.is-success):not(.is-warning):not(.is-danger):not(.is-light):not(.is-dark) {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-color);
+}
+
+body .button:not(.is-primary):not(.is-link):not(.is-info):not(.is-success):not(.is-warning):not(.is-danger):not(.is-light):not(.is-dark):hover {
+  background-color: var(--bg-secondary);
+  box-shadow: var(--shadow-hover);
 }
 
 /* ========================================
@@ -38,17 +111,66 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 10px;
-  padding: 10px;
 }
 
 .calendar-cell {
   background: var(--bg-secondary);
-  height: 100px;
   border-radius: 12px;
-  padding: 8px;
+  padding: 6px;
+  height: 110px;
+  display: flex;
+  flex-direction: column;
+}
+
+.event-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 5px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.event-item {
+  border-radius: 6px;
+  margin-top: 10px;
+  padding: 4px 6px;
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+}
+
+.event-time {
+  font-size: 11px;
+  opacity: 0.95;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-title {
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.event-more {
+  border-radius: 6px;
+  padding: 4px 6px;
+  background: var(--bg-tertiary);
+  border: 1px solid var(--card-border);
   color: var(--text-primary);
-  position: relative;
-  transition: background 0.3s ease, color 0.3s ease;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .event {
@@ -67,10 +189,49 @@
 }
 
 /* Colores de eventos dinámicos */
-.event-blue { background: var(--event-blue); }
-.event-pink { background: var(--event-pink); }
-.event-purple { background: var(--event-purple); }
-.event-green { background: var(--event-green); }
+.event-blue {
+  background: var(--event-blue);
+}
+
+.event-pink {
+  background: var(--event-pink);
+}
+
+.event-purple {
+  background: var(--event-purple);
+}
+
+.event-green {
+  background: var(--event-green);
+}
+
+
+@media (max-width: 768px) {
+  .calendar-cell {
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .calendar-cell {
+    height: 90px;
+  }
+}
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .calendar-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .calendar-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 /* ========================================
    MODAL
@@ -102,7 +263,7 @@
 
 .modal-card {
   background-color: var(--bg-tertiary);
-  box-shadow: 0 5px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 5px 40px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -154,6 +315,7 @@
   height: 2px;
   width: 50%;
 }
+
 .modal-card-head .delete::after {
   height: 50%;
   width: 2px;
@@ -239,8 +401,22 @@
     height: 80px;
     font-size: 14px;
   }
-  .event {
-    font-size: 12px;
+
+  .event-stack {
+    gap: 4px;
+    max-height: 58px;
+  }
+
+  .event-item {
+    font-size: 11px;
+  }
+
+  .event-time {
+    font-size: 10px;
+  }
+
+  .event-title {
+    font-size: 11px;
   }
 }
 
@@ -248,7 +424,21 @@
   .calendar-cell {
     height: 60px;
   }
-  .event {
-    font-size: 12px;
+
+  .event-stack {
+    gap: 4px;
+    max-height: 46px;
+  }
+
+  .event-item {
+    font-size: 10px;
+  }
+
+  .event-time {
+    font-size: 9px;
+  }
+
+  .event-title {
+    font-size: 10px;
   }
 }

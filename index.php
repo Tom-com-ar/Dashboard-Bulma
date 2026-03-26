@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if (empty($_SESSION['user_id'])) {
+    header("Location: ./login.php");
+    exit;
+}
+
 include "./php/conexion.php";
 
 ?>
@@ -29,6 +36,9 @@ include "./php/conexion.php";
                     <button class="button" id="themeToggle">
                         <span id="themeIcon">Dark</span>
                     </button>
+                </div>
+                <div class="navbar-item">
+                    <a class="button" href="./php/user/logout.php">Salir</a>
                 </div>
             </div>
         </nav>
@@ -89,7 +99,7 @@ include "./php/conexion.php";
         <div class="modal-background" onclick="cerrarModal()"></div>
         <div class="modal-card">
             <header class="modal-card-head">
-                <p class="modal-card-title">Crear Evento</p>
+                <p class="modal-card-title" id="modalTitulo">Crear Evento</p>
                 <button class="delete" onclick="cerrarModal()"></button>
             </header>
             <section class="modal-card-body">
@@ -111,6 +121,7 @@ include "./php/conexion.php";
                         <input class="input" type="date" id="eventoFecha" disabled>
                     </div>
                 </div>
+                <input type="hidden" id="eventoId">
                 <div class="field">
                     <label class="label">Descripción</label>
                     <div class="control">
@@ -120,13 +131,14 @@ include "./php/conexion.php";
             </section>
             <footer class="modal-card-foot">
                 <button class="button" onclick="cerrarModal()">Cancelar</button>
-                <button class="button is-info" onclick="guardarEvento()">Guardar</button>
+                <button class="button is-danger" id="btnBorrarEvento" onclick="borrarEvento()" style="display:none;">Borrar</button>
+                <button class="button is-info" id="btnGuardarEvento" onclick="guardarOActualizarEvento()">Guardar</button>
             </footer>
         </div>
     </div>
 
     <script src="./js/main.js"></script>
-    <script src="./js/calendario.js"></script>
+    <script src="./js/calendario.js?v=2"></script>
 
 </body>
 

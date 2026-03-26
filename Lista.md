@@ -2,16 +2,12 @@
 HACER TODO RESPONSIVE
 -----------------------
 
-Inicio de Sesión y Registro
-
--Modificar base de datos
-
 Calendario
 
 -Hacer Responsive
--Que se vean mas de un evento si lo hay 
--Que se pueda ver la info del evento y editarla (borrar, modificar)
+-Numeros del Calendario en Light no se ven
 -Fotos
+-Relaciones de eventos de los usuarios
 
 PDP
 
