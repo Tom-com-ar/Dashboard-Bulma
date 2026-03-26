@@ -13,21 +13,27 @@ include "../conexion.php";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $data = json_decode(file_get_contents("php://input"), true);
 
-  $id = (int)($data['id'] ?? 0);
+  $id      = (int)($data['id'] ?? 0);
+  $user_id = (int) $_SESSION['user_id'];
+
   if ($id <= 0) {
     echo json_encode(['success' => false, 'message' => 'ID inválido']);
     exit;
   }
 
-  $stmt = $conn->prepare("DELETE FROM eventos WHERE id = ?");
-  $stmt->bind_param("i", $id);
+  // ✅ Solo puede borrar sus propios eventos (user_id = sesión)
+  $stmt = $conn->prepare("DELETE FROM eventos WHERE id = ? AND user_id = ?");
+  $stmt->bind_param("ii", $id, $user_id);
 
   if ($stmt->execute()) {
-    echo json_encode(['success' => true, 'message' => 'Evento eliminado correctamente']);
+    if ($stmt->affected_rows > 0) {
+      echo json_encode(['success' => true, 'message' => 'Evento eliminado correctamente']);
+    } else {
+      echo json_encode(['success' => false, 'message' => 'No tienes permiso para eliminar este evento']);
+    }
   } else {
     echo json_encode(['success' => false, 'message' => 'Error al eliminar el evento']);
   }
 
   $stmt->close();
 }
-

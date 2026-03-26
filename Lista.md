@@ -2,13 +2,6 @@
 HACER TODO RESPONSIVE
 -----------------------
 
-Calendario
-
--Hacer Responsive
--Numeros del Calendario en Light no se ven
--Fotos
--Relaciones de eventos de los usuarios
-
 PDP
 
 -Crearemos un script `generar_reporte.php` que capture los datos de la sesión (por ejemplo, la contraseña evaluada y el estado del calendario)
