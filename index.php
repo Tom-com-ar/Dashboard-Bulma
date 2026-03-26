@@ -1,3 +1,8 @@
+<?php
+include "./php/conexion.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -22,7 +27,7 @@
             <div class="navbar-end">
                 <div class="navbar-item">
                     <button class="button" id="themeToggle">
-                        <span>Dark</span>
+                        <span id="themeIcon">Dark</span>
                     </button>
                 </div>
             </div>
@@ -48,20 +53,20 @@
                 <div id="content" class="column is-9">
                     <div class="level mb-4">
                         <div class="level-left">
-                            <button class="button is-dark" onclick="prevMonth()">←</button>
+                            <button class="button" onclick="prevMonth()">←</button>
                         </div>
 
                         <div class="level-item">
-                            <h2 class="title has-text-white" id="monthYear"></h2>
+                            <h2 class="title" id="monthYear" style="margin-bottom: 0;"></h2>
                         </div>
 
                         <div class="level-right">
-                            <button class="button is-dark" onclick="nextMonth()">→</button>
+                            <button class="button" onclick="nextMonth()">→</button>
                         </div>
                     </div>
 
                     <!-- Días -->
-                    <div class="columns is-mobile has-text-centered has-text-grey-light mb-2">
+                    <div class="columns is-mobile has-text-centered mb-2">
                         <div class="column">Lunes</div>
                         <div class="column">Martes</div>
                         <div class="column">Miércoles</div>
@@ -73,12 +78,52 @@
 
                     <!-- Calendario -->
                     <div id="calendar" class="calendar-grid has-7-columns">
-                        <div class="calendar-cell"> </div>
+                        <div class="calendar-cell"></div>
                     </div>
                 </div>
             </div>
     </main>
 
+<!-- Modal para crear evento -->
+    <div id="modalEvento" class="modal">
+        <div class="modal-background" onclick="cerrarModal()"></div>
+        <div class="modal-card">
+            <header class="modal-card-head">
+                <p class="modal-card-title">Crear Evento</p>
+                <button class="delete" onclick="cerrarModal()"></button>
+            </header>
+            <section class="modal-card-body">
+                <div class="field">
+                    <label class="label">Nombre del Evento</label>
+                    <div class="control">
+                        <input class="input" type="text" id="eventoTitulo" placeholder="Ej: Reunión importante">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Hora</label>
+                    <div class="control">
+                        <input class="input" type="time" id="eventoHora">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Fecha</label>
+                    <div class="control">
+                        <input class="input" type="date" id="eventoFecha" disabled>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Descripción</label>
+                    <div class="control">
+                        <input class="input" type="text" id="eventoDescripcion" placeholder="Ej: Reunión importante">
+                    </div>
+                </div>
+            </section>
+            <footer class="modal-card-foot">
+                <button class="button" onclick="cerrarModal()">Cancelar</button>
+                <button class="button is-info" onclick="guardarEvento()">Guardar</button>
+            </footer>
+        </div>
+    </div>
 
     <script src="./js/main.js"></script>
     <script src="./js/calendario.js"></script>
