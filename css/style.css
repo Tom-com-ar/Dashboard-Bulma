@@ -420,6 +420,33 @@ body .button:not(.is-primary):not(.is-link):not(.is-info):not(.is-success):not(.
   cursor: not-allowed;
 }
 
+footer {
+  display: flex;
+  justify-content: center; /* centra horizontal */
+  align-items: center;     /* centra vertical */
+  padding: 20px;
+}
+
+footer button {
+  background-color: #3273dc; /* azul tipo Bulma */
+  color: white;
+  border: none;
+  padding: 12px 25px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+footer button:hover {
+  background-color: #2759a5;
+  transform: scale(1.05);
+}
+
+footer button:active {
+  transform: scale(0.95);
+}
+
 
 @media (max-width: 1024px) {
   .calendar-grid {

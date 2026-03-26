@@ -160,6 +160,21 @@ include "./php/conexion.php";
     <script src="./js/main.js"></script>
     <script src="./js/calendario.js"></script>
 
+    <footer>
+        <a href="./php/pdf/generar_reporte.php" target="_blank">
+            <button>Generar PDF</button>
+        </a>
+    </footer>
+
+
+    <script>
+        function generarPDF() {
+        const year = date.getFullYear();
+        const month = date.getMonth() + 1; // 1-12
+
+        window.open(`./php/generar_reporte.pdf.php?year=${year}&month=${month}`, '_blank');
+        }
+    </script>
 
 </body>
 

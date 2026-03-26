@@ -13,7 +13,7 @@ CREATE TABLE users (
 -- ✅ Tabla de eventos con relación al usuario
 CREATE TABLE eventos (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user_id INT DEFAULT NULL,               -- NULL = evento global (feriados, partidos, efemérides)
+  user_id INT DEFAULT NULL,             
   titulo VARCHAR(100),
   descripcion TEXT,
   fecha DATE,
