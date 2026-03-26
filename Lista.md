@@ -4,10 +4,6 @@ HACER TODO RESPONSIVE
 
 PDP
 
--Crearemos un script `generar_reporte.php` que capture los datos de la sesión (por ejemplo, la contraseña evaluada y el estado del calendario)
--Crear el pdf
--Fecha actual.
--Estado del calendario (mes visualizado).
 -Última contraseña analizada y su nivel de seguridad.
 -Listado de los últimos 5 registros guardados en la tabla `password_logs`.
 
