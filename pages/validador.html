@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Dashboard - Bulma</title>
+</head>
+
+<body>
+
+    <header>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="navbar-brand">
+                <div class="navbar-item">
+                    <h1 class="title is-4">Dashboard</h1>
+                </div>
+            </div>
+            <div class="navbar-end">
+                <div class="navbar-item">
+                    <button class="button" id="themeToggle">
+                        <span>Dark</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Main Container -->
+        <div class="container is-fluid" style="padding: 2rem 1.5rem;">
+            <div class="columns">
+                <!-- Sidebar -->
+                <div class="column is-3">
+                    <aside class="box menu">
+                        <p class="menu-label">Menú Principal</p>
+                        <ul class="menu-list">
+                            <li><a href="../index.html">Dashboard</a></li>
+                            <li><a href="#" class="is-active">Validador de Contraseñas</a></li>
+                            <li><a href="#">Pdf</a></li>
+                        </ul>
+                    </aside>
+                </div>
+
+                <div id="content" class="column is-9">
+                    
+                </div>
+            </div>
+    </main>
+
+
+    <script src="./js/main.js"></script>
+
+</body>
+
+</html>
