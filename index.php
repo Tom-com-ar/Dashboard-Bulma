@@ -52,7 +52,7 @@ include "./php/conexion.php";
                         <p class="menu-label">Menú Principal</p>
                         <ul class="menu-list">
                             <li><a href="#" class="is-active">Dashboard</a></li>
-                            <li><a href="./pages/validador.html">Validador de Contraseñas</a></li>
+                            <li><a href="./pages/cambiar_contrasena.php">Validador de Contraseñas</a></li>
                             <li><a href="#">Pdf</a></li>
                         </ul>
                     </aside>

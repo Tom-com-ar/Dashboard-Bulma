@@ -573,3 +573,90 @@ footer button:active {
     gap: 0.5rem;
   }
 }
+
+/* ========================================
+     Validador de contraseña
+     ======================================== */
+        .password-validator {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 1.5rem;
+        }
+
+        .check-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem; 
+            font-size: 0.95rem;
+            color: var(--text-primary);
+        }
+
+        .check-item .icon {
+            margin-right: 0.75rem;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .check-icon {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .check-icon.error {
+            color: #f14668;
+        }
+
+        .check-icon.success {
+            color: #48c774;
+        }
+
+        .password-strength {
+            margin-top: 1rem;
+            padding: 1rem;
+            border-radius: 5px;
+        }
+
+        .password-strength.weak {
+            background-color: rgba(241, 70, 104, 0.15);
+            border-left: 4px solid #f14668;
+            color: var(--text-primary);
+        }
+
+        .password-strength.medium {
+            background-color: rgba(255, 221, 87, 0.15);
+            border-left: 4px solid #ffdd57;
+            color: var(--text-primary);
+        }
+
+        .password-strength.strong {
+            background-color: rgba(72, 199, 116, 0.15);
+            border-left: 4px solid #48c774;
+            color: var(--text-primary);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .password-input-group {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            background: none;
+            border: none;
+            font-size: 1.1rem;
+            color: #7a7a7a;
+        }
+
+        .toggle-password:hover {
+            color: #363636;
+        }
+       
